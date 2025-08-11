@@ -50,9 +50,146 @@ body::before {
     width: 100%;
     height: 100%;
     background: 
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 200px 60px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 240px 90px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 280px 20px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 320px 70px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 360px 40px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 400px 80px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 440px 30px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 480px 60px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 520px 90px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 560px 20px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 600px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 640px 40px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 680px 80px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 720px 30px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 760px 60px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 800px 90px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 840px 20px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 880px 70px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 920px 40px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 960px 80px, rgba(255,255,255,0.5), transparent),
+        /* Étoiles dans le centre */
+        radial-gradient(1px 1px at 150px 150px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 200px 200px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 250px 180px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 300px 220px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 350px 160px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 400px 190px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 450px 240px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 500px 170px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 550px 210px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 600px 140px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 650px 230px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 700px 180px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 750px 200px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 800px 150px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 850px 220px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 900px 170px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 950px 190px, rgba(255,255,255,0.8), transparent);
+    background-size: 1000px 1000px;
+    animation: constellationMove 60s linear infinite;
     pointer-events: none;
     z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(3px 3px at 150px 150px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 350px 250px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(4px 4px at 550px 100px, rgba(255,255,255,1), transparent),
+        radial-gradient(2px 2px at 750px 300px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(3px 3px at 950px 200px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 1150px 350px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(4px 4px at 1350px 150px, rgba(255,255,255,1), transparent),
+        radial-gradient(2px 2px at 1550px 250px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(3px 3px at 1750px 100px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 1950px 300px, rgba(255,255,255,0.8), transparent),
+        /* Étoiles brillantes dans le centre */
+        radial-gradient(3px 3px at 400px 400px, rgba(255,255,255,1), transparent),
+        radial-gradient(2px 2px at 500px 350px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(4px 4px at 600px 450px, rgba(255,255,255,1), transparent),
+        radial-gradient(2px 2px at 700px 380px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(3px 3px at 800px 420px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 900px 360px, rgba(255,255,255,1), transparent),
+        radial-gradient(4px 4px at 1000px 400px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 1100px 440px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(3px 3px at 1200px 380px, rgba(255,255,255,1), transparent),
+        radial-gradient(2px 2px at 1300px 420px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(4px 4px at 1400px 360px, rgba(255,255,255,1), transparent),
+        radial-gradient(2px 2px at 1500px 400px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(3px 3px at 1600px 440px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 1700px 380px, rgba(255,255,255,1), transparent),
+        radial-gradient(4px 4px at 1800px 420px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 1900px 360px, rgba(255,255,255,0.8), transparent);
+    background-size: 2000px 2000px;
+    animation: constellationMove2 80s linear infinite, starTwinkle 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes constellationMove {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(-50px) translateY(-30px);
+    }
+    50% {
+        transform: translateX(-100px) translateY(0);
+    }
+    75% {
+        transform: translateX(-50px) translateY(30px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+@keyframes constellationMove2 {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+    }
+    33% {
+        transform: translateX(-30px) translateY(-20px) rotate(1deg);
+    }
+    66% {
+        transform: translateX(-60px) translateY(10px) rotate(-1deg);
+    }
+    100% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes starTwinkle {
+    0%, 100% {
+        opacity: 1;
+        filter: brightness(1);
+    }
+    25% {
+        opacity: 0.7;
+        filter: brightness(0.8);
+    }
+    50% {
+        opacity: 1;
+        filter: brightness(1.2);
+    }
+    75% {
+        opacity: 0.9;
+        filter: brightness(0.9);
+    }
 }
 
 .container {
