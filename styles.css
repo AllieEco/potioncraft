@@ -1,18 +1,25 @@
-/* Variables CSS pour les couleurs magiques */
+/* Variables CSS pour les couleurs magiques modernes */
 :root {
-    --primary-purple: #6b46c1;
-    --secondary-purple: #8b5cf6;
-    --dark-purple: #4c1d95;
-    --light-purple: #e9d5ff;
+    --primary-purple: #a855f7;
+    --secondary-purple: #c084fc;
+    --dark-purple: #7c3aed;
+    --light-purple: #f3e8ff;
     --gold: #fbbf24;
-    --silver: #e5e7eb;
-    --dark-bg: #1f2937;
-    --cauldron-black: #1a1a1a;
+    --silver: #f1f5f9;
+    --dark-bg: #0f172a;
+    --cauldron-black: #1e293b;
     --potion-green: #10b981;
     --potion-blue: #3b82f6;
     --potion-red: #ef4444;
     --potion-purple: #8b5cf6;
     --potion-yellow: #f59e0b;
+    --neon-pink: #ec4899;
+    --neon-cyan: #06b6d4;
+    --neon-green: #10b981;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow-glow: 0 0 20px rgba(168, 85, 247, 0.3);
+    --shadow-glow-gold: 0 0 20px rgba(251, 191, 36, 0.4);
 }
 
 /* Reset et styles de base */
@@ -24,10 +31,28 @@
 
 body {
     font-family: 'Crimson Text', serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.2) 0%, transparent 50%),
+        linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
     min-height: 100vh;
-    color: #333;
+    color: #f8fafc;
     overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+    pointer-events: none;
+    z-index: -1;
 }
 
 .container {
@@ -40,25 +65,59 @@ body {
 .header {
     text-align: center;
     margin-bottom: 40px;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    background: var(--glass-bg);
+    border-radius: 30px;
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
 }
 
 .title {
     font-family: 'Cinzel', serif;
-    font-size: 3.5rem;
-    color: var(--gold);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    margin-bottom: 10px;
+    font-size: 4rem;
+    background: linear-gradient(45deg, var(--gold), var(--neon-pink), var(--neon-cyan));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    animation: gradient-shift 4s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--light-purple);
     font-style: italic;
+    text-shadow: 0 0 10px rgba(243, 232, 255, 0.5);
+    position: relative;
+    z-index: 1;
 }
 
 /* Zone principale du jeu */
@@ -79,93 +138,129 @@ body {
 
 /* Table */
 .table {
-    width: 300px;
-    height: 200px;
-    background: linear-gradient(45deg, #8b4513, #a0522d);
+    width: 320px;
+    height: 220px;
+    background: 
+        radial-gradient(ellipse at center, #8b4513 0%, #654321 70%, #3e2723 100%);
     border-radius: 50% 50% 0 0;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 10px 20px rgba(255, 255, 255, 0.1);
+    border: 2px solid #5d4037;
 }
 
 .table::before {
     content: '';
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: linear-gradient(45deg, #654321, #8b4513);
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    background: 
+        radial-gradient(ellipse at center, #a0522d 0%, #8b4513 50%, #654321 100%);
     border-radius: 50% 50% 0 0;
     z-index: -1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.table::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    border-radius: 50% 50% 0 0;
+    pointer-events: none;
 }
 
 /* Chaudron */
 .cauldron {
-    width: 200px;
-    height: 150px;
+    width: 220px;
+    height: 170px;
     position: relative;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    background: url('cauldron.png') no-repeat center center;
+    background-size: contain;
 }
 
 .cauldron:hover {
-    transform: scale(1.05);
+    transform: scale(1.08) translateY(-5px);
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
 }
 
-.cauldron-top {
-    width: 180px;
-    height: 20px;
-    background: var(--cauldron-black);
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    left: 10px;
-    border: 3px solid #333;
-}
-
-.cauldron-body {
-    width: 160px;
-    height: 100px;
-    background: var(--cauldron-black);
-    border-radius: 50% 50% 0 0;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    border: 3px solid #333;
-    overflow: hidden;
+/* Chaudron avec image PNG */
+.cauldron-top,
+.cauldron-body,
+.cauldron-bottom {
+    display: none; /* Masquer les éléments CSS du chaudron */
 }
 
 .potion-liquid {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, var(--potion-purple), var(--potion-blue));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background: 
+        radial-gradient(ellipse at center, var(--potion-purple) 0%, var(--potion-blue) 50%, var(--neon-cyan) 100%);
     opacity: 0;
-    transition: opacity 0.5s ease;
-    border-radius: 50% 50% 0 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.potion-liquid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
 }
 
 .potion-liquid.active {
     opacity: 0.8;
-    animation: bubble 2s infinite;
+    animation: bubble 3s ease-in-out infinite;
+}
+
+.potion-liquid.active::before {
+    opacity: 1;
 }
 
 @keyframes bubble {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-}
-
-.cauldron-bottom {
-    width: 140px;
-    height: 30px;
-    background: var(--cauldron-black);
-    border-radius: 0 0 50% 50%;
-    position: absolute;
-    bottom: 0;
-    left: 30px;
-    border: 3px solid #333;
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        filter: brightness(1);
+    }
+    25% { 
+        transform: translate(-50%, -50%) scale(1.02) rotate(1deg);
+        filter: brightness(1.1);
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.05) rotate(0deg);
+        filter: brightness(1.2);
+    }
+    75% { 
+        transform: translate(-50%, -50%) scale(1.02) rotate(-1deg);
+        filter: brightness(1.1);
+    }
 }
 
 .steam {
@@ -175,35 +270,80 @@ body {
     transform: translateX(-50%);
     width: 60px;
     height: 40px;
-    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+    background: 
+        radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 30%, transparent 70%);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
+    filter: blur(1px);
+    z-index: 2;
 }
 
 .steam.active {
     opacity: 1;
-    animation: steam-rise 3s infinite;
+    animation: steam-rise 4s ease-in-out infinite;
 }
 
 @keyframes steam-rise {
-    0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.8; }
-    100% { transform: translateX(-50%) translateY(-20px) scale(1.5); opacity: 0; }
+    0% { 
+        transform: translateX(-50%) translateY(0) scale(1) rotate(0deg); 
+        opacity: 0.9;
+        filter: blur(1px);
+    }
+    25% {
+        transform: translateX(-50%) translateY(-10px) scale(1.2) rotate(5deg);
+        opacity: 0.8;
+        filter: blur(2px);
+    }
+    50% { 
+        transform: translateX(-50%) translateY(-20px) scale(1.4) rotate(0deg); 
+        opacity: 0.6;
+        filter: blur(3px);
+    }
+    75% {
+        transform: translateX(-50%) translateY(-30px) scale(1.6) rotate(-5deg);
+        opacity: 0.4;
+        filter: blur(4px);
+    }
+    100% { 
+        transform: translateX(-50%) translateY(-40px) scale(1.8) rotate(0deg); 
+        opacity: 0;
+        filter: blur(5px);
+    }
 }
 
 /* Zone des ingrédients sélectionnés */
 .selected-ingredients {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    min-width: 300px;
+    background: var(--glass-bg);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    min-width: 320px;
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    overflow: hidden;
+}
+
+.selected-ingredients::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .selected-ingredients h3 {
     color: var(--gold);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-family: 'Cinzel', serif;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    position: relative;
+    z-index: 1;
 }
 
 .ingredients-list {
@@ -214,21 +354,26 @@ body {
 }
 
 .ingredient-tag {
-    background: var(--primary-purple);
+    background: linear-gradient(45deg, var(--primary-purple), var(--secondary-purple));
     color: white;
-    padding: 8px 12px;
-    border-radius: 20px;
+    padding: 10px 15px;
+    border-radius: 25px;
     font-size: 0.9rem;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
 .ingredient-tag:hover {
-    background: var(--secondary-purple);
-    transform: scale(1.05);
+    background: linear-gradient(45deg, var(--secondary-purple), var(--neon-pink));
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
 }
 
 .ingredient-tag .remove {
@@ -236,34 +381,68 @@ body {
     border: none;
     color: white;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ingredient-tag .remove:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
 }
 
 /* Bouton de brassage */
 .brew-button {
-    background: linear-gradient(45deg, var(--primary-purple), var(--secondary-purple));
+    background: linear-gradient(45deg, var(--primary-purple), var(--secondary-purple), var(--neon-pink));
+    background-size: 200% 200%;
     color: white;
     border: none;
-    padding: 15px 30px;
-    border-radius: 25px;
-    font-size: 1.1rem;
+    padding: 18px 35px;
+    border-radius: 30px;
+    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 8px 25px rgba(168, 85, 247, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    animation: gradient-shift 3s ease-in-out infinite;
+}
+
+.brew-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
 }
 
 .brew-button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 15px 35px rgba(168, 85, 247, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.brew-button:hover:not(:disabled)::before {
+    left: 100%;
 }
 
 .brew-button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    animation: none;
 }
 
 /* Résultat de la potion */
@@ -315,60 +494,119 @@ body {
 
 /* Panneau des ingrédients */
 .ingredients-panel {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 25px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--glass-bg);
+    padding: 30px;
+    border-radius: 25px;
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
     height: fit-content;
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    overflow: hidden;
+}
+
+.ingredients-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .ingredients-panel h2 {
     color: var(--gold);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-family: 'Cinzel', serif;
     text-align: center;
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+    position: relative;
+    z-index: 1;
 }
 
 .ingredients-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 20px;
     max-height: 600px;
     overflow-y: auto;
+    position: relative;
+    z-index: 1;
 }
 
 .ingredient-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 10px;
+    background: linear-gradient(135deg, var(--glass-bg), rgba(255, 255, 255, 0.05));
+    padding: 20px;
+    border-radius: 15px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--glass-border);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ingredient-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
 }
 
 .ingredient-item:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.1));
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 8px 25px rgba(168, 85, 247, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-purple);
+}
+
+.ingredient-item:hover::before {
+    left: 100%;
 }
 
 .ingredient-item.selected {
-    background: var(--primary-purple);
+    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
     color: white;
     border-color: var(--gold);
+    box-shadow: 
+        0 8px 25px rgba(168, 85, 247, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
 }
 
 .ingredient-emoji {
-    font-size: 2rem;
-    margin-bottom: 8px;
+    font-size: 2.5rem;
+    margin-bottom: 12px;
     display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
+}
+
+.ingredient-item:hover .ingredient-emoji {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
 }
 
 .ingredient-name {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.ingredient-item:hover .ingredient-name {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* Recettes sauvegardées */
