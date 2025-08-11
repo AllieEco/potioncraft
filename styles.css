@@ -30,7 +30,7 @@
 }
 
 body {
-    font-family: 'Crimson Text', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: 
         radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.3) 0%, transparent 50%),
@@ -92,8 +92,9 @@ body::before {
 }
 
 .title {
-    font-family: 'Cinzel', serif;
-    font-size: 4rem;
+    font-family: 'Orbitron', monospace;
+    font-size: 3.5rem;
+    font-weight: 900;
     background: linear-gradient(45deg, var(--gold), var(--neon-pink), var(--neon-cyan));
     background-size: 200% 200%;
     -webkit-background-clip: text;
@@ -104,6 +105,7 @@ body::before {
     text-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
     position: relative;
     z-index: 1;
+    letter-spacing: 2px;
 }
 
 @keyframes gradient-shift {
@@ -112,12 +114,13 @@ body::before {
 }
 
 .subtitle {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--light-purple);
-    font-style: italic;
+    font-weight: 300;
     text-shadow: 0 0 10px rgba(243, 232, 255, 0.5);
     position: relative;
     z-index: 1;
+    letter-spacing: 0.5px;
 }
 
 /* Zone principale du jeu */
@@ -340,10 +343,12 @@ body::before {
 .selected-ingredients h3 {
     color: var(--gold);
     margin-bottom: 20px;
-    font-family: 'Cinzel', serif;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
     text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
     position: relative;
     z-index: 1;
+    letter-spacing: 1px;
 }
 
 .ingredients-list {
@@ -462,18 +467,21 @@ body::before {
 }
 
 .potion-name {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.6rem;
+    font-weight: 700;
     color: var(--gold);
     margin: 15px 0;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
 }
 
 .potion-description {
     color: var(--light-purple);
-    font-style: italic;
+    font-weight: 400;
     margin-bottom: 20px;
     line-height: 1.6;
+    font-size: 1rem;
 }
 
 .save-recipe-button {
@@ -521,11 +529,13 @@ body::before {
 .ingredients-panel h2 {
     color: var(--gold);
     margin-bottom: 25px;
-    font-family: 'Cinzel', serif;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
     text-align: center;
     text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
     position: relative;
     z-index: 1;
+    letter-spacing: 1px;
 }
 
 .ingredients-grid {
@@ -655,8 +665,10 @@ body::before {
 .saved-recipes h2 {
     color: var(--gold);
     margin-bottom: 20px;
-    font-family: 'Cinzel', serif;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
     text-align: center;
+    letter-spacing: 1px;
 }
 
 .recipes-list {
@@ -675,7 +687,9 @@ body::before {
 .recipe-card h4 {
     color: var(--gold);
     margin-bottom: 10px;
-    font-family: 'Cinzel', serif;
+    font-family: 'Orbitron', monospace;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .recipe-ingredients {
@@ -818,9 +832,11 @@ body::before {
 .popup-header h3 {
     color: white;
     margin: 0;
-    font-family: 'Cinzel', serif;
-    font-size: 1.3rem;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 1.2rem;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
 }
 
 .popup-close {
@@ -921,7 +937,8 @@ body::before {
 
 @media (max-width: 768px) {
     .title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        letter-spacing: 1px;
     }
     
     .cauldron {
