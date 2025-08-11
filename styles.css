@@ -583,6 +583,40 @@ body::before {
         0 8px 25px rgba(168, 85, 247, 0.4),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
     transform: scale(1.05);
+    position: relative;
+}
+
+.ingredient-item.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: var(--gold);
+    color: var(--dark-bg);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ingredient-item.selected:hover {
+    background: linear-gradient(135deg, var(--neon-pink), var(--primary-purple));
+    border-color: var(--neon-pink);
+    transform: scale(1.08);
+    box-shadow: 
+        0 12px 30px rgba(236, 72, 153, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.ingredient-item.selected:hover::after {
+    content: '×';
+    background: var(--neon-pink);
+    transform: scale(1.1);
 }
 
 .ingredient-emoji {

@@ -129,17 +129,23 @@ function renderIngredients() {
 
 // Ajout d'un ingrédient
 function addIngredient(ingredient) {
+    // Vérifier si l'ingrédient est déjà sélectionné
+    const existingIngredient = gameState.selectedIngredients.find(i => i.id === ingredient.id);
+    
+    if (existingIngredient) {
+        // Si l'ingrédient est déjà sélectionné, le supprimer
+        removeIngredient(ingredient.id);
+        showNotification(`${ingredient.name} retiré du chaudron`, 'info');
+        return;
+    }
+    
     if (gameState.selectedIngredients.length >= GAME_CONFIG.maxIngredients) {
         showNotification('Vous ne pouvez pas ajouter plus de 4 ingrédients !', 'warning');
         return;
     }
     
-    if (gameState.selectedIngredients.find(i => i.id === ingredient.id)) {
-        showNotification('Cet ingrédient est déjà dans le chaudron !', 'warning');
-        return;
-    }
-    
     gameState.selectedIngredients.push(ingredient);
+    showNotification(`${ingredient.name} ajouté au chaudron`, 'success');
     updateUI();
     animateCauldron();
 }
