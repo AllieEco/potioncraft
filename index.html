@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potion Craft - Créez des Potions Magiques</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête -->
+        <header class="header">
+            <h1 class="title">🧪 Potion Craft</h1>
+            <p class="subtitle">Créez des potions magiques en mélangeant des ingrédients mystérieux</p>
+        </header>
+
+        <!-- Zone principale du jeu -->
+        <main class="game-area">
+            <!-- Zone du chaudron -->
+            <div class="cauldron-section">
+                <div class="table">
+                    <div class="cauldron" id="cauldron">
+                        <div class="cauldron-top"></div>
+                        <div class="cauldron-body">
+                            <div class="potion-liquid" id="potion-liquid"></div>
+                        </div>
+                        <div class="cauldron-bottom"></div>
+                        <div class="steam" id="steam"></div>
+                    </div>
+                </div>
+                
+                <!-- Zone des ingrédients sélectionnés -->
+                <div class="selected-ingredients" id="selected-ingredients">
+                    <h3>Ingrédients dans le chaudron :</h3>
+                    <div class="ingredients-list" id="ingredients-list"></div>
+                </div>
+
+                <!-- Bouton pour créer la potion -->
+                <button class="brew-button" id="brew-button" disabled>
+                    🧙‍♀️ Brasser la Potion
+                </button>
+
+                <!-- Résultat de la potion -->
+                <div class="potion-result" id="potion-result" style="display: none;">
+                    <h3>✨ Nouvelle Potion Créée !</h3>
+                    <div class="potion-name" id="potion-name"></div>
+                    <div class="potion-description" id="potion-description"></div>
+                    <button class="save-recipe-button" id="save-recipe-button">
+                        💾 Sauvegarder la Recette
+                    </button>
+                </div>
+            </div>
+
+            <!-- Liste des ingrédients -->
+            <div class="ingredients-panel">
+                <h2>📚 Grimoire d'Ingrédients</h2>
+                <div class="ingredients-grid" id="ingredients-grid">
+                    <!-- Les ingrédients seront générés par JavaScript -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Zone des recettes sauvegardées -->
+        <section class="saved-recipes">
+            <h2>📖 Recettes Sauvegardées</h2>
+            <div class="recipes-list" id="recipes-list">
+                <!-- Les recettes sauvegardées seront affichées ici -->
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

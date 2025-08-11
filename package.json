@@ -1,0 +1,33 @@
+{
+  "name": "potion-craft",
+  "version": "1.0.0",
+  "description": "Un jeu de création de potions magiques inspiré d'Infinite Craft",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 3000 -o",
+    "dev": "npx live-server --port=3000 --open=/",
+    "serve": "python -m http.server 8000"
+  },
+  "keywords": [
+    "game",
+    "potion",
+    "magic",
+    "crafting",
+    "infinite-craft",
+    "alchemy"
+  ],
+  "author": "Votre Nom",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/votre-username/potion-craft.git"
+  },
+  "bugs": {
+    "url": "https://github.com/votre-username/potion-craft/issues"
+  },
+  "homepage": "https://github.com/votre-username/potion-craft#readme"
+} 

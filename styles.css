@@ -1,0 +1,481 @@
+/* Variables CSS pour les couleurs magiques */
+:root {
+    --primary-purple: #6b46c1;
+    --secondary-purple: #8b5cf6;
+    --dark-purple: #4c1d95;
+    --light-purple: #e9d5ff;
+    --gold: #fbbf24;
+    --silver: #e5e7eb;
+    --dark-bg: #1f2937;
+    --cauldron-black: #1a1a1a;
+    --potion-green: #10b981;
+    --potion-blue: #3b82f6;
+    --potion-red: #ef4444;
+    --potion-purple: #8b5cf6;
+    --potion-yellow: #f59e0b;
+}
+
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Crimson Text', serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* En-tête */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.title {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    color: var(--gold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--light-purple);
+    font-style: italic;
+}
+
+/* Zone principale du jeu */
+.game-area {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* Section du chaudron */
+.cauldron-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Table */
+.table {
+    width: 300px;
+    height: 200px;
+    background: linear-gradient(45deg, #8b4513, #a0522d);
+    border-radius: 50% 50% 0 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.table::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, #654321, #8b4513);
+    border-radius: 50% 50% 0 0;
+    z-index: -1;
+}
+
+/* Chaudron */
+.cauldron {
+    width: 200px;
+    height: 150px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cauldron:hover {
+    transform: scale(1.05);
+}
+
+.cauldron-top {
+    width: 180px;
+    height: 20px;
+    background: var(--cauldron-black);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    border: 3px solid #333;
+}
+
+.cauldron-body {
+    width: 160px;
+    height: 100px;
+    background: var(--cauldron-black);
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    border: 3px solid #333;
+    overflow: hidden;
+}
+
+.potion-liquid {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--potion-purple), var(--potion-blue));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    border-radius: 50% 50% 0 0;
+}
+
+.potion-liquid.active {
+    opacity: 0.8;
+    animation: bubble 2s infinite;
+}
+
+@keyframes bubble {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.cauldron-bottom {
+    width: 140px;
+    height: 30px;
+    background: var(--cauldron-black);
+    border-radius: 0 0 50% 50%;
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    border: 3px solid #333;
+}
+
+.steam {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.steam.active {
+    opacity: 1;
+    animation: steam-rise 3s infinite;
+}
+
+@keyframes steam-rise {
+    0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.8; }
+    100% { transform: translateX(-50%) translateY(-20px) scale(1.5); opacity: 0; }
+}
+
+/* Zone des ingrédients sélectionnés */
+.selected-ingredients {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-width: 300px;
+}
+
+.selected-ingredients h3 {
+    color: var(--gold);
+    margin-bottom: 15px;
+    font-family: 'Cinzel', serif;
+}
+
+.ingredients-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 60px;
+}
+
+.ingredient-tag {
+    background: var(--primary-purple);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ingredient-tag:hover {
+    background: var(--secondary-purple);
+    transform: scale(1.05);
+}
+
+.ingredient-tag .remove {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Bouton de brassage */
+.brew-button {
+    background: linear-gradient(45deg, var(--primary-purple), var(--secondary-purple));
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.brew-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.brew-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Résultat de la potion */
+.potion-result {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.potion-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin: 15px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.potion-description {
+    color: var(--light-purple);
+    font-style: italic;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.save-recipe-button {
+    background: var(--gold);
+    color: var(--dark-bg);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.save-recipe-button:hover {
+    background: #f59e0b;
+    transform: scale(1.05);
+}
+
+/* Panneau des ingrédients */
+.ingredients-panel {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: fit-content;
+}
+
+.ingredients-panel h2 {
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-family: 'Cinzel', serif;
+    text-align: center;
+}
+
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.ingredient-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.ingredient-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ingredient-item.selected {
+    background: var(--primary-purple);
+    color: white;
+    border-color: var(--gold);
+}
+
+.ingredient-emoji {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.ingredient-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Recettes sauvegardées */
+.saved-recipes {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.saved-recipes h2 {
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-family: 'Cinzel', serif;
+    text-align: center;
+}
+
+.recipes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.recipe-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.recipe-card h4 {
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-family: 'Cinzel', serif;
+}
+
+.recipe-ingredients {
+    color: var(--light-purple);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.recipe-description {
+    color: var(--light-purple);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-purple);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-purple);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .game-area {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .ingredients-panel {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .cauldron {
+        width: 150px;
+        height: 120px;
+    }
+    
+    .cauldron-top {
+        width: 130px;
+        left: 10px;
+    }
+    
+    .cauldron-body {
+        width: 110px;
+        height: 70px;
+        left: 20px;
+    }
+    
+    .cauldron-bottom {
+        width: 90px;
+        left: 30px;
+    }
+    
+    .ingredients-grid {
+        grid-template-columns: 1fr;
+    }
+} 
