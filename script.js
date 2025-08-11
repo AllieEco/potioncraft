@@ -2,7 +2,8 @@
 const GAME_CONFIG = {
     minIngredients: 2,
     maxIngredients: 4,
-    recipesFile: 'recipes.json'
+    recipesFile: 'recipes.json',
+    apiUrl: 'http://localhost:3001'
 };
 
 // Base d'ingrédients magiques
@@ -103,7 +104,8 @@ const POTION_COLORS = {
 let gameState = {
     selectedIngredients: [],
     recipes: {},
-    isBrewing: false
+    isBrewing: false,
+    ollamaStatus: 'unknown'
 };
 
 // Éléments DOM
@@ -122,7 +124,8 @@ const elements = {
 };
 
 // Initialisation du jeu
-function initGame() {
+async function initGame() {
+    await checkOllamaStatus();
     loadRecipes();
     renderIngredients();
     setupEventListeners();
@@ -141,6 +144,60 @@ async function loadRecipes() {
         gameState.recipes = {};
     }
     renderSavedRecipes();
+}
+
+// Vérification du statut d'Ollama
+async function checkOllamaStatus() {
+    try {
+        const response = await fetch(`${GAME_CONFIG.apiUrl}/api/ollama-health`);
+        const data = await response.json();
+        gameState.ollamaStatus = data.ollamaRunning ? 'connected' : 'disconnected';
+        
+        updateOllamaStatusIndicator();
+        
+        if (data.ollamaRunning) {
+            showNotification('🔮 Ollama connecté - Génération IA activée !', 'success');
+        } else {
+            showNotification('⚠️ Ollama non disponible - Mode fallback activé', 'warning');
+        }
+    } catch (error) {
+        console.error('Erreur vérification Ollama:', error);
+        gameState.ollamaStatus = 'error';
+        updateOllamaStatusIndicator();
+        showNotification('❌ Erreur de connexion à Ollama', 'error');
+    }
+}
+
+// Mise à jour de l'indicateur de statut Ollama
+function updateOllamaStatusIndicator() {
+    const indicator = document.getElementById('status-indicator');
+    const statusText = document.getElementById('status-text');
+    
+    if (!indicator || !statusText) return;
+    
+    // Supprimer toutes les classes de statut
+    indicator.classList.remove('connected', 'disconnected', 'error');
+    
+    switch (gameState.ollamaStatus) {
+        case 'connected':
+            indicator.textContent = '🟢';
+            indicator.classList.add('connected');
+            statusText.textContent = 'IA Ollama connectée';
+            break;
+        case 'disconnected':
+            indicator.textContent = '🟡';
+            indicator.classList.add('disconnected');
+            statusText.textContent = 'IA Ollama déconnectée';
+            break;
+        case 'error':
+            indicator.textContent = '🔴';
+            indicator.classList.add('error');
+            statusText.textContent = 'Erreur de connexion IA';
+            break;
+        default:
+            indicator.textContent = '⚪';
+            statusText.textContent = 'Vérification IA...';
+    }
 }
 
 // Sauvegarde des recettes
@@ -389,14 +446,44 @@ function getRecipeKey() {
         .join('+');
 }
 
-// Génération de potion avec LLM (simulation)
+// Génération de potion avec Ollama
 async function generatePotionWithLLM() {
-    // Simulation d'un délai de génération
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
+    try {
+        // Vérifier si Ollama est disponible
+        if (gameState.ollamaStatus !== 'connected') {
+            throw new Error('Ollama non disponible');
+        }
+        
+        const response = await fetch(`${GAME_CONFIG.apiUrl}/api/generate-potion`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ingredients: gameState.selectedIngredients
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Erreur API: ${response.status}`);
+        }
+        
+        const potion = await response.json();
+        return potion;
+        
+    } catch (error) {
+        console.error('Erreur génération IA:', error);
+        
+        // Fallback vers la génération locale
+        showNotification('🔄 Utilisation du mode fallback local', 'info');
+        return generateLocalPotion();
+    }
+}
+
+// Génération locale de potion (fallback)
+function generateLocalPotion() {
     const ingredients = gameState.selectedIngredients;
     const ingredientNames = ingredients.map(i => i.name);
-    const types = [...new Set(ingredients.map(i => i.type))];
     
     // Analyse des ingrédients pour créer un nom cohérent
     const potionName = generateCreativePotionName(ingredients);
@@ -407,7 +494,9 @@ async function generatePotionWithLLM() {
         description: potionDescription,
         ingredients: ingredientNames,
         type: getDominantIngredientType(),
-        power: Math.floor(Math.random() * 100) + 1
+        power: Math.floor(Math.random() * 100) + 1,
+        effects: ['Effet magique'],
+        rarity: 'commun'
     };
 }
 
@@ -805,6 +894,25 @@ function generateCreativePotionDescription(ingredients) {
 function showPotionResult(potion) {
     elements.potionName.textContent = potion.name;
     elements.potionDescription.textContent = potion.description;
+    
+    // Ajouter les effets si disponibles
+    if (potion.effects && potion.effects.length > 0) {
+        const effectsHtml = potion.effects.map(effect => `<li>${effect}</li>`).join('');
+        elements.potionDescription.innerHTML += `<br><strong>Effets:</strong><ul>${effectsHtml}</ul>`;
+    }
+    
+    // Ajouter la rareté si disponible
+    if (potion.rarity) {
+        const rarityColors = {
+            'commun': '#6b7280',
+            'rare': '#3b82f6',
+            'épique': '#8b5cf6',
+            'légendaire': '#fbbf24'
+        };
+        const rarityColor = rarityColors[potion.rarity] || '#6b7280';
+        elements.potionDescription.innerHTML += `<br><span style="color: ${rarityColor}; font-weight: bold;">Rareté: ${potion.rarity}</span>`;
+    }
+    
     elements.potionResult.style.display = 'block';
     
     // Animation d'apparition

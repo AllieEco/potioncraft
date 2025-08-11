@@ -5,11 +5,13 @@ Un jeu de création de potions magiques inspiré d'Infinite Craft, où vous mél
 ## ✨ Fonctionnalités
 
 - **Chaudron interactif** : Un chaudron 3D animé sur une table en bois
-- **25 ingrédients magiques** : De la Racine de Mandragore aux Larmes d'Ange
+- **50+ ingrédients magiques** : De la Racine de Mandragore aux Extraits Bizarres
 - **Système de brassage** : Mélangez 2 à 4 ingrédients pour créer des potions
-- **Génération intelligente** : Les noms et descriptions des potions sont générés de manière cohérente
+- **Génération IA avec Ollama** : Les potions sont générées dynamiquement par Llama 2
+- **Mode fallback intelligent** : Génération locale si l'IA n'est pas disponible
 - **Sauvegarde des recettes** : Chaque combinaison d'ingrédients donne toujours le même résultat
 - **Interface magique** : Design immersif avec animations et effets visuels
+- **Indicateur de statut IA** : Visualisation en temps réel de la connexion Ollama
 - **Responsive** : Compatible avec tous les appareils
 
 ## 🎮 Comment jouer
@@ -44,8 +46,10 @@ Un jeu de création de potions magiques inspiré d'Infinite Craft, où vous mél
 - **HTML5** : Structure sémantique
 - **CSS3** : Animations, gradients, effets visuels
 - **JavaScript ES6+** : Logique du jeu, gestion d'état
+- **Node.js + Express** : Serveur backend
+- **Ollama + Llama 2** : Génération IA des potions
 - **LocalStorage** : Sauvegarde des recettes
-- **Fetch API** : Gestion des fichiers JSON
+- **Fetch API** : Communication avec l'API
 
 ## 📁 Structure du projet
 
@@ -53,12 +57,38 @@ Un jeu de création de potions magiques inspiré d'Infinite Craft, où vous mél
 potioncraft/
 ├── index.html          # Page principale
 ├── styles.css          # Styles et animations
-├── script.js           # Logique du jeu
+├── script.js           # Logique du jeu frontend
+├── server.js           # Serveur backend avec API Ollama
+├── package.json        # Dépendances Node.js
 ├── recipes.json        # Recettes sauvegardées (créé automatiquement)
+├── OLLAMA_SETUP.md     # Guide d'installation Ollama
 └── README.md           # Documentation
 ```
 
 ## 🚀 Installation et utilisation
+
+### Option 1 : Avec IA Ollama (recommandé)
+
+1. **Installez Ollama** :
+   - Suivez le guide détaillé dans [OLLAMA_SETUP.md](OLLAMA_SETUP.md)
+   - Téléchargez le modèle Llama 2 : `ollama pull llama2`
+
+2. **Installez les dépendances** :
+   ```bash
+   npm install
+   ```
+
+3. **Démarrez le serveur** :
+   ```bash
+   npm start
+   ```
+
+4. **Ouvrez dans votre navigateur** :
+   ```
+   http://localhost:3001
+   ```
+
+### Option 2 : Mode local uniquement
 
 1. **Clonez le projet** :
    ```bash
@@ -68,7 +98,7 @@ potioncraft/
 
 2. **Ouvrez le fichier** :
    - Double-cliquez sur `index.html`
-   - Ou ouvrez avec un serveur local pour une meilleure expérience
+   - Ou utilisez un serveur local : `npm run client`
 
 3. **Commencez à jouer** :
    - Sélectionnez des ingrédients
@@ -77,12 +107,20 @@ potioncraft/
 
 ## 🔮 Fonctionnalités avancées
 
+### Génération IA avec Ollama
+
+Le jeu utilise Llama 2 via Ollama pour générer des potions uniques :
+- **Génération dynamique** : Chaque potion est créée par l'IA
+- **Cohérence magique** : Les descriptions respectent l'univers fantasy
+- **Fallback intelligent** : Mode local si l'IA n'est pas disponible
+- **Indicateur de statut** : Visualisation en temps réel de la connexion
+
 ### Système de génération de potions
 
 Le jeu utilise un système intelligent pour générer des noms et descriptions de potions basés sur :
 - Le type d'ingrédient dominant
 - La combinaison d'ingrédients
-- Des templates prédéfinis avec variations
+- Des templates prédéfinis avec variations (mode fallback)
 
 ### Sauvegarde persistante
 
@@ -97,6 +135,7 @@ Le jeu utilise un système intelligent pour générer des noms et descriptions d
 - Couleurs de potions dynamiques
 - Transitions fluides
 - Notifications toast
+- Indicateur de statut IA animé
 
 ## 🎯 Améliorations futures
 
