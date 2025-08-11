@@ -117,6 +117,7 @@ function renderIngredients() {
     INGREDIENTS.forEach(ingredient => {
         const ingredientElement = document.createElement('div');
         ingredientElement.className = 'ingredient-item';
+        ingredientElement.setAttribute('data-ingredient-id', ingredient.id);
         ingredientElement.innerHTML = `
             <span class="ingredient-emoji">${ingredient.emoji}</span>
             <div class="ingredient-name">${ingredient.name}</div>
@@ -144,10 +145,73 @@ function addIngredient(ingredient) {
         return;
     }
     
+    // Créer l'animation de l'emoji qui vole vers le chaudron
+    animateIngredientToCauldron(ingredient);
+    
     gameState.selectedIngredients.push(ingredient);
     showNotification(`${ingredient.name} ajouté au chaudron`, 'success');
     updateUI();
     animateCauldron();
+}
+
+// Animation de l'ingrédient qui vole vers le chaudron
+function animateIngredientToCauldron(ingredient) {
+    // Trouver l'élément de l'ingrédient cliqué
+    const ingredientElement = document.querySelector(`[data-ingredient-id="${ingredient.id}"]`);
+    if (!ingredientElement) return;
+    
+    // Trouver le chaudron
+    const cauldron = elements.cauldron;
+    if (!cauldron) return;
+    
+    // Créer l'élément animé
+    const flyingEmoji = document.createElement('div');
+    flyingEmoji.className = 'flying-ingredient';
+    flyingEmoji.textContent = ingredient.emoji;
+    flyingEmoji.style.cssText = `
+        position: fixed;
+        z-index: 1000;
+        font-size: 2rem;
+        pointer-events: none;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    `;
+    
+    // Obtenir les positions
+    const ingredientRect = ingredientElement.getBoundingClientRect();
+    const cauldronRect = cauldron.getBoundingClientRect();
+    
+    // Position initiale (centre de l'ingrédient)
+    const startX = ingredientRect.left + ingredientRect.width / 2;
+    const startY = ingredientRect.top + ingredientRect.height / 2;
+    
+    // Position finale (centre du chaudron)
+    const endX = cauldronRect.left + cauldronRect.width / 2;
+    const endY = cauldronRect.top + cauldronRect.height / 2;
+    
+    // Appliquer la position initiale
+    flyingEmoji.style.left = `${startX}px`;
+    flyingEmoji.style.top = `${startY}px`;
+    flyingEmoji.style.transform = 'translate(-50%, -50%) scale(1)';
+    
+    // Ajouter au DOM
+    document.body.appendChild(flyingEmoji);
+    
+    // Délai pour permettre le rendu initial
+    requestAnimationFrame(() => {
+        // Animation vers le chaudron
+        flyingEmoji.style.left = `${endX}px`;
+        flyingEmoji.style.top = `${endY}px`;
+        flyingEmoji.style.transform = 'translate(-50%, -50%) scale(0.5) rotate(360deg)';
+        flyingEmoji.style.opacity = '0';
+    });
+    
+    // Nettoyer après l'animation
+    setTimeout(() => {
+        if (flyingEmoji.parentNode) {
+            flyingEmoji.parentNode.removeChild(flyingEmoji);
+        }
+    }, 800);
 }
 
 // Suppression d'un ingrédient

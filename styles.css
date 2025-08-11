@@ -690,6 +690,39 @@ body::before {
     font-size: 0.9rem;
 }
 
+/* Animation de l'ingrédient qui vole */
+.flying-ingredient {
+    animation: flyToCauldron 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes flyToCauldron {
+    0% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 1;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) brightness(1);
+    }
+    25% {
+        transform: translate(-50%, -50%) scale(1.2) rotate(90deg);
+        opacity: 1;
+        filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4)) brightness(1.2);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1) rotate(180deg);
+        opacity: 0.8;
+        filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3)) brightness(1.1);
+    }
+    75% {
+        transform: translate(-50%, -50%) scale(0.8) rotate(270deg);
+        opacity: 0.6;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) brightness(1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.5) rotate(360deg);
+        opacity: 0;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)) brightness(0.8);
+    }
+}
+
 /* Scrollbar personnalisée */
 ::-webkit-scrollbar {
     width: 8px;
