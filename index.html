@@ -70,6 +70,25 @@
         </section>
     </div>
 
+    <!-- Popup de confirmation personnalisée -->
+    <div class="custom-popup" id="custom-popup">
+        <div class="popup-overlay" id="popup-overlay"></div>
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>🧪 Vider le chaudron ?</h3>
+                <button class="popup-close" id="popup-close">×</button>
+            </div>
+            <div class="popup-body">
+                <p>Êtes-vous sûr de vouloir vider le chaudron ?</p>
+                <p class="popup-ingredients" id="popup-ingredients"></p>
+            </div>
+            <div class="popup-actions">
+                <button class="popup-btn popup-btn-cancel" id="popup-cancel">Annuler</button>
+                <button class="popup-btn popup-btn-confirm" id="popup-confirm">Vider le chaudron</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html> 

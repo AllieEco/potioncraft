@@ -596,14 +596,53 @@ function setupEventListeners() {
     // Clic sur le chaudron pour vider
     elements.cauldron.addEventListener('click', () => {
         if (gameState.selectedIngredients.length > 0) {
-            if (confirm('Voulez-vous vider le chaudron ?')) {
-                gameState.selectedIngredients = [];
-                updateUI();
-                animateCauldron();
-                elements.potionResult.style.display = 'none';
-            }
+            showEmptyCauldronPopup();
         }
     });
+    
+    // Écouteurs pour la popup personnalisée
+    document.getElementById('popup-close').addEventListener('click', hideEmptyCauldronPopup);
+    document.getElementById('popup-cancel').addEventListener('click', hideEmptyCauldronPopup);
+    document.getElementById('popup-confirm').addEventListener('click', emptyCauldron);
+    document.getElementById('popup-overlay').addEventListener('click', hideEmptyCauldronPopup);
+}
+
+// Afficher la popup de vidage du chaudron
+function showEmptyCauldronPopup() {
+    const popup = document.getElementById('custom-popup');
+    const ingredientsList = document.getElementById('popup-ingredients');
+    
+    // Afficher la liste des ingrédients dans la popup
+    const ingredientsText = gameState.selectedIngredients
+        .map(ingredient => `${ingredient.emoji} ${ingredient.name}`)
+        .join(', ');
+    
+    ingredientsList.textContent = `Ingrédients actuels : ${ingredientsText}`;
+    
+    // Afficher la popup
+    popup.classList.add('show');
+    
+    // Empêcher le scroll de la page
+    document.body.style.overflow = 'hidden';
+}
+
+// Masquer la popup de vidage du chaudron
+function hideEmptyCauldronPopup() {
+    const popup = document.getElementById('custom-popup');
+    popup.classList.remove('show');
+    
+    // Restaurer le scroll de la page
+    document.body.style.overflow = '';
+}
+
+// Vider le chaudron
+function emptyCauldron() {
+    gameState.selectedIngredients = [];
+    updateUI();
+    animateCauldron();
+    elements.potionResult.style.display = 'none';
+    hideEmptyCauldronPopup();
+    showNotification('Chaudron vidé !', 'info');
 }
 
 // Affichage de notifications
