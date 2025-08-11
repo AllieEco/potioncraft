@@ -30,7 +30,57 @@ const INGREDIENTS = [
     { id: 'wind_spirit', name: 'Esprit du Vent', emoji: '💨', type: 'élémentaire' },
     { id: 'time_sand', name: 'Sable du Temps', emoji: '⏳', type: 'cosmique' },
     { id: 'void_essence', name: 'Essence du Vide', emoji: '🕳️', type: 'cosmique' },
-    { id: 'chaos_powder', name: 'Poudre du Chaos', emoji: '🌀', type: 'cosmique' }
+    { id: 'chaos_powder', name: 'Poudre du Chaos', emoji: '🌀', type: 'cosmique' },
+    
+    // Nouvelles plantes magiques
+    { id: 'screaming_mandrake', name: 'Mandragore Hurlante', emoji: '🌱', type: 'plante' },
+    { id: 'silver_moon_flower', name: 'Fleur de Lune Argentée', emoji: '🌙', type: 'plante' },
+    { id: 'dragon_root', name: 'Racine de Dragon Endormi', emoji: '🐉', type: 'plante' },
+    { id: 'temporal_ivy', name: 'Lierre Temporel', emoji: '⏰', type: 'plante' },
+    { id: 'ticklish_mushroom', name: 'Champignon Chatouilleur', emoji: '🍄', type: 'plante' },
+    { id: 'giant_sneeze_herb', name: 'Herbe à Éternuements Géants', emoji: '🤧', type: 'plante' },
+    { id: 'reverse_clover', name: 'Trèfle de Malchance Inversée', emoji: '🍀', type: 'plante' },
+    { id: 'dragon_breath_pepper', name: 'Piment du Souffle de Dragon', emoji: '🌶️', type: 'plante' },
+    { id: 'electric_algae', name: 'Algue des Profondeurs Électriques', emoji: '⚡', type: 'plante' },
+    { id: 'cloudy_moss', name: 'Mousse Nuageuse', emoji: '☁️', type: 'plante' },
+    { id: 'ice_cactus', name: 'Cactus de Glace Éternelle', emoji: '🌵❄️', type: 'plante' },
+    { id: 'whirlwind_rose', name: 'Rose de Vent Tourbillonnant', emoji: '🌹💨', type: 'plante' },
+    { id: 'telepathic_orchid', name: 'Orchidée Télépathique', emoji: '🧠', type: 'plante' },
+    { id: 'upside_down_banana', name: 'Bananier Inversé', emoji: '🍌', type: 'plante' },
+    { id: 'rainbow_dandelion', name: 'Pissenlit Multicolore', emoji: '🌈', type: 'plante' },
+    { id: 'basilisk_basil', name: 'Basilic du Basilisk', emoji: '🐍', type: 'plante' },
+    { id: 'giant_miniature_tree', name: 'Arbre Miniature Géant', emoji: '🌳', type: 'plante' },
+    { id: 'lost_time_flower', name: 'Fleur du Temps Perdu', emoji: '🕰️', type: 'plante' },
+    { id: 'mirror_mushroom', name: 'Champignon Miroir', emoji: '🪞', type: 'plante' },
+    { id: 'universal_laughter_herb', name: 'Herbe de Rigolade Universelle', emoji: '😂', type: 'plante' },
+    
+    // Poudres Magiques
+    { id: 'rainbow_dragon_scales', name: 'Poudre d\'Écailles de Dragon Arc-en-Ciel', emoji: '🐲✨', type: 'poudre' },
+    { id: 'clumsy_phoenix_ashes', name: 'Cendres de Phénix Maladroit', emoji: '🔥🤦', type: 'poudre' },
+    { id: 'insomniac_fairy_dust', name: 'Poussière d\'Ailes de Fée Insomniaque', emoji: '🧚💤', type: 'poudre' },
+    { id: 'grumpy_unicorn_bone', name: 'Poudre d\'Os de Licorne Grinchue', emoji: '🦄😤', type: 'poudre' },
+    { id: 'broken_hourglass_sand', name: 'Sable de Sablier Temporel Cassé', emoji: '⏳', type: 'poudre' },
+    
+    // Huiles Enchantées
+    { id: 'shy_kraken_oil', name: 'Huile de Kraken Timide', emoji: '🐙😳', type: 'huile' },
+    { id: 'cold_salamander_essence', name: 'Essence de Salamandre Frileuse', emoji: '🦎🧥', type: 'huile' },
+    { id: 'dimensional_snail_slime', name: 'Bave Raffinée d\'Escargot Dimensionnel', emoji: '🐌🌀', type: 'huile' },
+    { id: 'lazy_troll_elbow_oil', name: 'Huile de Coude de Troll Paresseux', emoji: '💪😴', type: 'huile' },
+    { id: 'sincere_crocodile_tears', name: 'Larmes de Crocodile Sincère', emoji: '🐊😭', type: 'huile' },
+    
+    // Extraits d'Animaux Fantastiques
+    { id: 'sick_sea_unicorn_mucus', name: 'Mucus de Licorne des Mers Enrhumée', emoji: '🦄🌊🤧', type: 'extrait' },
+    { id: 'vegetarian_basilisk_saliva', name: 'Salive de Basilic Végétarien', emoji: '🐍🥗', type: 'extrait' },
+    { id: 'deaf_giant_earwax', name: 'Cire d\'Oreille de Géant Sourd', emoji: '👂👹', type: 'extrait' },
+    { id: 'vegan_vampire_blood', name: 'Sang de Vampire Végan', emoji: '🧛🌱', type: 'extrait' },
+    { id: 'awkward_griffon_feather', name: 'Plume Fondue de Griffon Malaisant', emoji: '🦅🦁😅', type: 'extrait' },
+    
+    // Extraits Bizarres et Rares
+    { id: 'cheshire_cat_smile', name: 'Extrait de Sourire de Chat de Cheshire', emoji: '😸✨', type: 'extrait' },
+    { id: 'sleeping_dragon_snore', name: 'Essence de Ronflement de Dragon Endormi', emoji: '🐲💤', type: 'extrait' },
+    { id: 'philosopher_octopus_ink', name: 'Suc de Tentacule de Poulpe Philosophe', emoji: '🐙🎓', type: 'extrait' },
+    { id: 'scared_lion_courage', name: 'Extrait de Courage de Lion Peureux', emoji: '🦁😰', type: 'extrait' },
+    { id: 'rebel_unicorn_curse', name: 'Essence de Malédiction de Licorne Rebelle', emoji: '🦄😈', type: 'extrait' }
 ];
 
 // Couleurs de potions basées sur les types d'ingrédients
@@ -43,7 +93,10 @@ const POTION_COLORS = {
     démonique: '#dc2626',
     divin: '#fbbf24',
     ombre: '#1f2937',
-    féerique: '#ec4899'
+    féerique: '#ec4899',
+    poudre: '#f59e0b',
+    huile: '#8b5cf6',
+    extrait: '#ef4444'
 };
 
 // État du jeu
@@ -423,6 +476,86 @@ function generateCreativePotionName(ingredients) {
         potionName = 'Élixir de la Mandragore Ancestrale';
     } else if (hasFairy) {
         potionName = 'Potion de la Magie Féerique';
+    } else if (ingredients.some(i => i.id === 'screaming_mandrake')) {
+        potionName = 'Élixir de la Voix Tonitruante';
+    } else if (ingredients.some(i => i.id === 'silver_moon_flower')) {
+        potionName = 'Potion de Divination Lunaire';
+    } else if (ingredients.some(i => i.id === 'dragon_root')) {
+        potionName = 'Bréuvage de la Force Draconique';
+    } else if (ingredients.some(i => i.id === 'temporal_ivy')) {
+        potionName = 'Philtre de Maîtrise Temporelle';
+    } else if (ingredients.some(i => i.id === 'ticklish_mushroom')) {
+        potionName = 'Infusion de Joie Contagieuse';
+    } else if (ingredients.some(i => i.id === 'giant_sneeze_herb')) {
+        potionName = 'Tisane des Éternuements Magiques';
+    } else if (ingredients.some(i => i.id === 'reverse_clover')) {
+        potionName = 'Élixir de Chance Inversée';
+    } else if (ingredients.some(i => i.id === 'dragon_breath_pepper')) {
+        potionName = 'Concoction du Souffle de Dragon';
+    } else if (ingredients.some(i => i.id === 'electric_algae')) {
+        potionName = 'Potion de Contrôle Électrique';
+    } else if (ingredients.some(i => i.id === 'cloudy_moss')) {
+        potionName = 'Bréuvage de Lévitation Nuageuse';
+    } else if (ingredients.some(i => i.id === 'ice_cactus')) {
+        potionName = 'Élixir de Gel Éternel';
+    } else if (ingredients.some(i => i.id === 'whirlwind_rose')) {
+        potionName = 'Infusion de Téléportation Venteuse';
+    } else if (ingredients.some(i => i.id === 'telepathic_orchid')) {
+        potionName = 'Potion de Communication Mentale';
+    } else if (ingredients.some(i => i.id === 'upside_down_banana')) {
+        potionName = 'Philtre d\'Inversion Gravitationnelle';
+    } else if (ingredients.some(i => i.id === 'rainbow_dandelion')) {
+        potionName = 'Élixir de Camouflage Arc-en-Ciel';
+    } else if (ingredients.some(i => i.id === 'basilisk_basil')) {
+        potionName = 'Concoction de Protection Pétrifiante';
+    } else if (ingredients.some(i => i.id === 'giant_miniature_tree')) {
+        potionName = 'Potion de Paradoxe Spatial';
+    } else if (ingredients.some(i => i.id === 'lost_time_flower')) {
+        potionName = 'Bréuvage de Récupération Mnésique';
+    } else if (ingredients.some(i => i.id === 'mirror_mushroom')) {
+        potionName = 'Élixir d\'Illusion Miroir';
+    } else if (ingredients.some(i => i.id === 'universal_laughter_herb')) {
+        potionName = 'Infusion de Rigolade Universelle';
+    } else if (ingredients.some(i => i.id === 'rainbow_dragon_scales')) {
+        potionName = 'Élixir Prismatique Arc-en-Ciel';
+    } else if (ingredients.some(i => i.id === 'clumsy_phoenix_ashes')) {
+        potionName = 'Potion de Résurrection Maladroite';
+    } else if (ingredients.some(i => i.id === 'insomniac_fairy_dust')) {
+        potionName = 'Bréuvage d\'Énergie Infinie';
+    } else if (ingredients.some(i => i.id === 'grumpy_unicorn_bone')) {
+        potionName = 'Concoction de Purification Agressive';
+    } else if (ingredients.some(i => i.id === 'broken_hourglass_sand')) {
+        potionName = 'Philtre de Décalage Temporel';
+    } else if (ingredients.some(i => i.id === 'shy_kraken_oil')) {
+        potionName = 'Huile d\'Invisibilité Aquatique';
+    } else if (ingredients.some(i => i.id === 'cold_salamander_essence')) {
+        potionName = 'Essence de Chaleur Paradoxale';
+    } else if (ingredients.some(i => i.id === 'dimensional_snail_slime')) {
+        potionName = 'Bave de Téléportation Lente';
+    } else if (ingredients.some(i => i.id === 'lazy_troll_elbow_oil')) {
+        potionName = 'Huile de Force Minimale';
+    } else if (ingredients.some(i => i.id === 'sincere_crocodile_tears')) {
+        potionName = 'Larmes d\'Empathie Forcée';
+    } else if (ingredients.some(i => i.id === 'sick_sea_unicorn_mucus')) {
+        potionName = 'Mucus de Guérison Aquatique';
+    } else if (ingredients.some(i => i.id === 'vegetarian_basilisk_saliva')) {
+        potionName = 'Salive de Pétrification Végétarienne';
+    } else if (ingredients.some(i => i.id === 'deaf_giant_earwax')) {
+        potionName = 'Cire de Silence Assourdissant';
+    } else if (ingredients.some(i => i.id === 'vegan_vampire_blood')) {
+        potionName = 'Sang d\'Immortalité Végétarienne';
+    } else if (ingredients.some(i => i.id === 'awkward_griffon_feather')) {
+        potionName = 'Plume de Vol Malaisant';
+    } else if (ingredients.some(i => i.id === 'cheshire_cat_smile')) {
+        potionName = 'Extrait d\'Invisibilité Souriante';
+    } else if (ingredients.some(i => i.id === 'sleeping_dragon_snore')) {
+        potionName = 'Essence de Sommeil Dragonique';
+    } else if (ingredients.some(i => i.id === 'philosopher_octopus_ink')) {
+        potionName = 'Encre de Sagesse Tentaculaire';
+    } else if (ingredients.some(i => i.id === 'scared_lion_courage')) {
+        potionName = 'Extrait de Courage Tremblant';
+    } else if (ingredients.some(i => i.id === 'rebel_unicorn_curse')) {
+        potionName = 'Essence de Malédiction Rose';
     } else {
         // Combinaisons plus complexes basées sur les types
         const dominantType = getDominantIngredientType();
@@ -435,7 +568,10 @@ function generateCreativePotionName(ingredients) {
             démonique: 'des Ombres Démoniaques',
             divin: 'de la Lumière Divine',
             ombre: 'des Ténèbres Éternelles',
-            féerique: 'de la Magie Féerique'
+            féerique: 'de la Magie Féerique',
+            poudre: 'des Poudres Prismatiques',
+            huile: 'des Huiles Enchantées',
+            extrait: 'des Extraits Bizarres'
         };
         
         const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
@@ -526,6 +662,130 @@ function generateCreativePotionDescription(ingredients) {
                 break;
             case 'chaos_powder':
                 descriptions.push('La poudre du chaos crée des effets imprévisibles et puissants');
+                break;
+            case 'screaming_mandrake':
+                descriptions.push('La mandragore hurlante amplifie la voix et confère des pouvoirs de confusion');
+                break;
+            case 'silver_moon_flower':
+                descriptions.push('La fleur de lune argentée ouvre les portes de la divination et des rêves prophétiques');
+                break;
+            case 'dragon_root':
+                descriptions.push('La racine de dragon endormi confère résistance au feu et force légendaire');
+                break;
+            case 'temporal_ivy':
+                descriptions.push('Le lierre temporel permet de ralentir le temps et inverser le vieillissement');
+                break;
+            case 'ticklish_mushroom':
+                descriptions.push('Le champignon chatouilleur provoque un fou rire incontrôlable et une joie euphorique');
+                break;
+            case 'giant_sneeze_herb':
+                descriptions.push('L\'herbe à éternuements géants repousse les ennemis par la force de ses éternuements magiques');
+                break;
+            case 'reverse_clover':
+                descriptions.push('Le trèfle de malchance inversée transforme la malchance en chance folle');
+                break;
+            case 'dragon_breath_pepper':
+                descriptions.push('Le piment du souffle de dragon permet de cracher du feu temporairement');
+                break;
+            case 'electric_algae':
+                descriptions.push('L\'algue des profondeurs électriques maîtrise l\'électricité aquatique');
+                break;
+            case 'cloudy_moss':
+                descriptions.push('La mousse nuageuse permet la lévitation et la marche sur les nuages');
+                break;
+            case 'ice_cactus':
+                descriptions.push('Le cactus de glace éternelle permet le gel instantané et la résistance à la chaleur');
+                break;
+            case 'whirlwind_rose':
+                descriptions.push('La rose de vent tourbillonnant contrôle les courants d\'air et permet la téléportation courte');
+                break;
+            case 'telepathic_orchid':
+                descriptions.push('L\'orchidée télépathique permet la communication mentale et la lecture de pensées');
+                break;
+            case 'upside_down_banana':
+                descriptions.push('Le bananier inversé crée une inversion de gravité localisée');
+                break;
+            case 'rainbow_dandelion':
+                descriptions.push('Le pissenlit multicolore change de couleur selon l\'humeur et permet le camouflage');
+                break;
+            case 'basilisk_basil':
+                descriptions.push('Le basilic du basilisk protège contre les regards pétrifiants');
+                break;
+            case 'giant_miniature_tree':
+                descriptions.push('L\'arbre miniature géant crée des paradoxes spatiaux et permet l\'agrandissement/rétrécissement');
+                break;
+            case 'lost_time_flower':
+                descriptions.push('La fleur du temps perdu permet de récupérer les souvenirs oubliés');
+                break;
+            case 'mirror_mushroom':
+                descriptions.push('Le champignon miroir crée des illusions et des doubles temporaires');
+                break;
+            case 'universal_laughter_herb':
+                descriptions.push('L\'herbe de rigolade universelle fait rire dans toutes les langues, même les langues mortes');
+                break;
+            // Poudres Magiques
+            case 'rainbow_dragon_scales':
+                descriptions.push('La poudre d\'écailles de dragon arc-en-ciel amplifie tous les sorts avec un effet prismatique');
+                break;
+            case 'clumsy_phoenix_ashes':
+                descriptions.push('Les cendres de phénix maladroit permettent une résurrection partielle et une régénération aléatoire');
+                break;
+            case 'insomniac_fairy_dust':
+                descriptions.push('La poussière d\'ailes de fée insomniaque confère une énergie infinie et une hyperactivité magique');
+                break;
+            case 'grumpy_unicorn_bone':
+                descriptions.push('La poudre d\'os de licorne grinchue effectue une purification agressive et un nettoyage excessif');
+                break;
+            case 'broken_hourglass_sand':
+                descriptions.push('Le sable de sablier temporel cassé crée des décalages temporels imprévisibles');
+                break;
+            // Huiles Enchantées
+            case 'shy_kraken_oil':
+                descriptions.push('L\'huile de kraken timide permet l\'invisibilité aquatique et un camouflage embarrassé');
+                break;
+            case 'cold_salamander_essence':
+                descriptions.push('L\'essence de salamandre frileuse produit une chaleur paradoxale et un feu qui réchauffe sans brûler');
+                break;
+            case 'dimensional_snail_slime':
+                descriptions.push('La bave raffinée d\'escargot dimensionnel crée des portails miniatures et une téléportation lente');
+                break;
+            case 'lazy_troll_elbow_oil':
+                descriptions.push('L\'huile de coude de troll paresseux confère une force minimale avec un effort maximum');
+                break;
+            case 'sincere_crocodile_tears':
+                descriptions.push('Les larmes de crocodile sincère provoquent une empathie forcée et une vérité émotionnelle');
+                break;
+            // Extraits d'Animaux Fantastiques
+            case 'sick_sea_unicorn_mucus':
+                descriptions.push('Le mucus de licorne des mers enrhumée permet une guérison aquatique et crée des bulles curatives');
+                break;
+            case 'vegetarian_basilisk_saliva':
+                descriptions.push('La salive de basilic végétarien provoque une pétrification temporaire des légumes seulement');
+                break;
+            case 'deaf_giant_earwax':
+                descriptions.push('La cire d\'oreille de géant sourd crée un silence assourdissant et un effet anti-bruit');
+                break;
+            case 'vegan_vampire_blood':
+                descriptions.push('Le sang de vampire végan confère une immortalité partielle et une soif de légumes');
+                break;
+            case 'awkward_griffon_feather':
+                descriptions.push('La plume fondue de griffon malaisant permet un vol hésitant et une maladresse aérienne');
+                break;
+            // Extraits Bizarres et Rares
+            case 'cheshire_cat_smile':
+                descriptions.push('L\'extrait de sourire de chat de Cheshire permet une invisibilité avec un sourire visible');
+                break;
+            case 'sleeping_dragon_snore':
+                descriptions.push('L\'essence de ronflement de dragon endormi provoque un sommeil magique instantané et des rêves épiques');
+                break;
+            case 'philosopher_octopus_ink':
+                descriptions.push('Le suc de tentacule de poulpe philosophe confère une sagesse tentaculaire et une réflexion profonde');
+                break;
+            case 'scared_lion_courage':
+                descriptions.push('L\'extrait de courage de lion peureux provoque un courage paradoxal et une bravoure tremblante');
+                break;
+            case 'rebel_unicorn_curse':
+                descriptions.push('L\'essence de malédiction de licorne rebelle crée des bénédictions maudites et un bonheur diabolique');
                 break;
         }
     });
